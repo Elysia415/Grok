@@ -13,15 +13,26 @@
 
 ## 快速部署
 
-### Cloudflare Workers 部署
+### 方法一：直接部署到 Cloudflare Workers
+
+[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/Elysia415/Grok)
+
+### 方法二：手动复制部署（推荐）
 
 1. 访问 [Cloudflare Workers Playground](https://workers.cloudflare.com/playground)
 2. 将 `src/worker.mjs` 的内容复制到编辑器中
 3. 点击 "Deploy" 按钮部署
 
-或者使用 Wrangler CLI：
+### 方法三：使用 Wrangler CLI
 
 ```bash
+# 安装 Wrangler
+npm install -g wrangler
+
+# 登录到 Cloudflare
+wrangler login
+
+# 部署 Worker
 wrangler deploy
 ```
 
@@ -85,6 +96,15 @@ completion = client.chat.completions.create(
 2. API 密钥直接从客户端传递到 X.AI，代理服务器不存储任何密钥
 3. 响应格式会自动转换为 OpenAI 格式
 4. 支持所有主要的 OpenAI API 参数
+
+## Cloudflare Workers 限制
+
+- 请求超时：30 秒
+- 内存限制：128MB
+- CPU 时间：10ms
+- 并发请求：取决于您的 Cloudflare 计划
+
+更多限制信息请参考 [Cloudflare Workers 限制文档](https://developers.cloudflare.com/workers/platform/limits/)
 
 ## 许可证
 
